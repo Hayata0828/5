@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ECApp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <header id="header" class="header">
+    <div class="header-title">
+      <h1>sample市場</h1>
+    </div>
+    <% if manager_signed_in? %>
+      <table>
+        <tbody>
+          <tr>
+            <td><%= link_to(current_manager.name, mypage_path) %></td>
+            <td><%= link_to("トップ","/") %></td>
+            <td><%= link_to("ログアウト","/managers/sign_out", method: :delete, date:{ confirm: "本当にログアウトしますか？"}) %></td>
+            <td><%= link_to("新規投稿","/product/new") %></td>
+          </tr>
+        </tbody>
+      </table>
+    <% else %>
+      <table>
+        <tbody>
+          <tr>
+            <td><%= link_to("ログイン","/managers/sign_in") %></td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+  </header><!-- /header -->
+    <%= yield %>
+  </body>
+</html>

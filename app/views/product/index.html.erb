@@ -1,0 +1,29 @@
+<h1>商品一覧</h1>
+
+<%= paginate(@products) %>
+
+<% @products.each do |product| %>
+    <table style="margin: auto; border-bottom: 1px solid black"">
+      <thead>
+        <tr>
+          <th>title</th>
+          <th>price</th>
+          <th style="text-align: left">description</th>
+          <th>image</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="width: 20%; text-align: center;"><%= link_to(product.title,"product/#{product.id}") %></td>
+          <td style="width: 15%; text-align: center;"><%= product.price  %></td>
+          <td style="width: 40%"><%= product.description  %></td>
+          <% if product.product_images.present? %>
+            <% product.product_images.each do |image| %>
+              <td><%= attachment_image_tag image, :image, :fill, 150, 150 %></td>
+            <% end -%>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+
+<% end %>

@@ -1,0 +1,21 @@
+<h1>My Page</h1>
+
+<h2>登録商品一覧</h2>
+<% current_manager.products.each do |product| %>
+    <table>
+      <thead>
+        <tr>
+          <th>title</th>
+          <th>price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="width: 30%; text-align: center;"><%= product.title %></td>
+          <td style="width: 30%; text-align: center;"><%= product.price %></td>
+          <td style="width: 20%"><%= link_to("編集","product/#{product.id}/edit") %></td>
+          <td style="width: 20%"><%= link_to("削除","product/#{product.id}/destroy", method: :delete) %></td
+        </tr>
+      </tbody>
+    </table>
+<% end %>

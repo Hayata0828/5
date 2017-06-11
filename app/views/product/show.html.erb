@@ -1,0 +1,15 @@
+<h1><%= @product.title %>の詳細ページ</h1>
+
+<%= render_breadcrumbs %>
+
+  <div class=“product”>
+    <p><%= @product.title %></p>
+    <p><%= @product.price %></p>
+    <p><%= @product.description %></p>
+
+    <% if @product.product_images.present? %>
+      <% @product.product_images.each do |image| %>
+        <%= attachment_image_tag image, :image, :fill, 300, 300 %>
+      <% end -%>
+    <% end %>
+  </div>

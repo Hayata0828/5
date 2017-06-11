@@ -1,0 +1,32 @@
+<h1>新規登録</h1>
+
+<%= form_for @product,url: "/product/create" do |f| %>
+    <%= f.label :title %><br>
+    <%= f.text_area :title %><br>
+    <%= f.label :price %><br>
+    <%= f.text_area :price %><br>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %><br>
+    <%= f.hidden_field :manager_id, value: current_manager.id %>
+
+    <%= f.fields_for (:product_images) do |image| %>
+      <%= image.attachment_field :image %>
+    <% end %>
+    <%= f.fields_for (:product_images) do |image| %>
+      <%= image.attachment_field :image %>
+    <% end %>
+    <%= f.fields_for (:product_images) do |image| %>
+      <%= image.attachment_field :image %>
+    <% end %>
+
+
+
+<!--     <%= f.fields_for (:product_images) do |image| %>
+      <%= f.attachment_field :image, multiple: true %>
+      <% end -%> -->
+    <%= f.submit(["登録"]) %>
+<% end %>
+
+
+
+
